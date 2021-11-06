@@ -1,44 +1,22 @@
 class Player {
-	constructor(shader, x = 0, y = 0, z = 0, color = '#ff0000') {
+	constructor(shader, x = 0, y = 0, z = 0, color = '#ff0000', size = 1) {
 		this.programInfo = twgl.createProgramInfo(gl, shader);
-		this.vertices = [
-			1, 1, -1, 1, 1, 1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, -1, -1, -1, 1, -1, 1, 1, 1, 1, 1, 1, 1,
-			-1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, 1, -1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1,
-			-1, 1, 1, -1, 1, -1, -1, -1, -1, -1,
-		];
-		this.normal = [
-			1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1,
-			0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, -1, 0, 0, -1,
-			0, 0, -1,
-		];
-		this.texcoord = [
-			1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0,
-			0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1,
-		];
-		this.indices = [
-			0, 1, 2, 0, 2, 3, 4, 5, 6, 4, 6, 7, 8, 9, 10, 8, 10, 11, 12, 13, 14, 12, 14, 15, 16, 17, 18, 16, 18, 19, 20,
-			21, 22, 20, 22, 23,
-		];
 
-		this.pos = [x, y, z];
+		this.pos = [x + size / 2, y, z];
 		this.dia = Math.sqrt(3);
 
 		// horizontal angle of cube
 		this.angle = 0;
 
 		this.materialProperties = {
-			materialColor: hex2rgb('#FF0000'),
+			materialColor: hex2rgb(color),
 			ambientIntensity: 0.1,
 		};
 
 		this.shininess = 50;
 		this.ks = 0.2;
-		this.bufferInfo = twgl.createBufferInfoFromArrays(gl, {
-			position: this.vertices,
-			normal: this.normal,
-			texcoord: this.texcoord,
-			indices: this.indices,
-		});
+		this.bufferInfo = twgl.primitives.createCubeBufferInfo(gl, size);
+		this.movementSpeed = 0.1;
 	}
 
 	render(gl, light, viewMatrix, projectionMatrix) {
@@ -66,10 +44,30 @@ class Player {
 		twgl.drawBufferInfo(gl, this.bufferInfo);
 	}
 
-	update(xOff, yOff, angleOff) {
-		this.pos[0] += xOff;
-		this.pos[1] += yOff;
-		this.angle -= angleOff / 5;
+	updateAngle(angleOff, controller) {
+		// this.pos[0] += xOff;
+		// this.pos[1] += yOff;
+		this.angle -= angleOff * controller.sensitivity;
 		this.angle %= 360;
+	}
+
+	move(controller) {
+		let angle = deg2rad(this.angle);
+		if (controller.w) {
+			this.pos[0] -= this.movementSpeed * Math.sin(angle);
+			this.pos[2] -= this.movementSpeed * Math.cos(angle);
+		}
+		if (controller.a) {
+			this.pos[0] -= this.movementSpeed * Math.cos(angle);
+			this.pos[2] += this.movementSpeed * Math.sin(angle);
+		}
+		if (controller.s) {
+			this.pos[0] += this.movementSpeed * Math.sin(angle);
+			this.pos[2] += this.movementSpeed * Math.cos(angle);
+		}
+		if (controller.d) {
+			this.pos[0] += this.movementSpeed * Math.cos(angle);
+			this.pos[2] -= this.movementSpeed * Math.sin(angle);
+		}
 	}
 }

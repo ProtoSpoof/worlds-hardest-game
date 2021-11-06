@@ -4,35 +4,6 @@ const canvas = document.getElementById('game-space');
 const gl = canvas.getContext('webgl2');
 canvas.requestPointerLock = canvas.requestPointerLock || canvas.mozRequestPointerLock;
 
-/* START mouse position tracking */
-canvas.onclick = () => {
-	canvas.requestPointerLock();
-};
-
-window.onresize = () => {
-	camera.updateAspect(canvas.clientWidth / canvas.clientHeight);
-};
-
-document.addEventListener('pointerlockchange', lockChangeAlert, false);
-document.addEventListener('mozpointerlockchange', lockChangeAlert, false);
-
-function lockChangeAlert() {
-	if (document.pointerLockElement === canvas || document.mozPointerLockElement === canvas) {
-		console.log('The pointer lock status is now locked');
-		document.addEventListener('mousemove', updatePosition, false);
-	} else {
-		console.log('The pointer lock status is now unlocked');
-		document.removeEventListener('mousemove', updatePosition, false);
-	}
-}
-
-function updatePosition(e) {
-	player.update(0, 0, e.movementX);
-	camera.update(e.movementX, e.movementY);
-	// console.log(camera.xAngle);
-}
-/* END mouse position tracking */
-
 function deg2rad(deg) {
 	return (Math.PI * deg) / 180;
 }

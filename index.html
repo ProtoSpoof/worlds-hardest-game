@@ -16,16 +16,32 @@
 		<img id="skyboxBack" src="assets/back.png" alt="skybox textures" style="display: none" />
 		<canvas id="game-space"></canvas>
 	</body>
+	<script>
+		// Setup the gamespace for webgl stuff
+		const canvas = document.getElementById('game-space');
+		const gl = canvas.getContext('webgl2');
+	</script>
+	<!-- Utilities -->
 	<script defer src="js/twgl-full.min.js"></script>
 	<script defer src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	<script defer src="js/utils.js"></script>
-	<script defer src="js/level.js"></script>
+
+	<!-- Game Objects -->
+	<script defer src="js/gameObject.js"></script>
 	<script defer src="js/player.js"></script>
+	<script defer src="js/enemy.js"></script>
+	<script defer src="js/coin.js"></script>
+	<script defer src="js/level.js"></script>
+
+	<!-- Interaction -->
+	<script defer src="js/controller.js"></script>
+
+	<!-- Rendering Elements -->
 	<script defer src="js/camera.js"></script>
 	<script defer src="js/skybox.js"></script>
-	<script defer src="js/enemy.js"></script>
-	<script defer src="js/controller.js"></script>
 	<script defer src="js/light.js"></script>
 	<script defer src="js/shaders.js"></script>
+
+	<!-- Main Game -->
 	<script defer src="js/hardestGame.js"></script>
 </html>

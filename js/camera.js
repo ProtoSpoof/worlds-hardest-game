@@ -1,13 +1,16 @@
 class Camera {
-	constructor(xAngle, yAngle, player, canvas) {
+	constructor(xAngle, yAngle, canvas, lookat) {
 		this.xAngle = xAngle;
 		this.yAngle = yAngle;
-		this.fov = 75;
+		this.fov = 45;
 		this.near = 0.1;
 		this.far = 1000000;
-		this.dist = 5;
+		this.dist = 6.5;
 		this.aspect = canvas.clientWidth / canvas.clientHeight;
-		this.lookAt = [player.pos[0], player.pos[1], player.pos[2]];
+		this.lookAt = lookat;
+		window.onresize = () => {
+			this.updateAspect(canvas.clientWidth / canvas.clientHeight);
+		};
 	}
 
 	update(yOff, xOff, controller) {
@@ -22,7 +25,7 @@ class Camera {
 		this.aspect = aspect;
 	}
 
-	move(player) {
-		this.lookAt = [player.pos[0], player.pos[1], player.pos[2]];
+	move(x, y, z) {
+		this.lookAt = [x, y, z];
 	}
 }

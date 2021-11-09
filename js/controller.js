@@ -5,6 +5,30 @@ class Controller {
 		this.s = false;
 		this.d = false;
 		this.sensitivity = 0.05;
+		canvas.requestPointerLock = canvas.requestPointerLock || canvas.mozRequestPointerLock;
+		document.addEventListener(
+			'pointerlockchange',
+			(e) => {
+				this.lockChangeAlert(e);
+			},
+			false
+		);
+		document.addEventListener(
+			'mozpointerlockchange',
+			(e) => {
+				this.lockChangeAlert(e);
+			},
+			false
+		);
+		document.addEventListener('keydown', (e) => {
+			this.update(e.which, true);
+		});
+		document.addEventListener('keyup', (e) => {
+			this.update(e.which, false);
+		});
+		canvas.onclick = () => {
+			canvas.requestPointerLock();
+		};
 	}
 
 	update(key, down) {
@@ -30,46 +54,16 @@ class Controller {
 				break;
 		}
 	}
-}
 
-document.addEventListener('pointerlockchange', lockChangeAlert, false);
-document.addEventListener('mozpointerlockchange', lockChangeAlert, false);
-document.addEventListener('keydown', keydown);
-document.addEventListener('keyup', keyup);
+	lockChangeAlert() {
+		if (document.pointerLockElement === canvas || document.mozPointerLockElement === canvas) {
+			document.addEventListener('mousemove', this.updateMouse, false);
+		} else {
+			document.removeEventListener('mousemove', this.updateMouse, false);
+		}
+	}
 
-function keydown(e) {
-	controller.update(e.which, true);
-}
-function keyup(e) {
-	controller.update(e.which, false);
-}
-
-function keydown(e) {
-	controller.update(e.which, true);
-}
-
-/* START mouse position tracking */
-canvas.onclick = () => {
-	canvas.requestPointerLock();
-};
-
-window.onresize = () => {
-	camera.updateAspect(canvas.clientWidth / canvas.clientHeight);
-};
-
-function lockChangeAlert() {
-	if (document.pointerLockElement === canvas || document.mozPointerLockElement === canvas) {
-		console.log('The pointer lock status is now locked');
-		document.addEventListener('mousemove', updatePosition, false);
-	} else {
-		console.log('The pointer lock status is now unlocked');
-		document.removeEventListener('mousemove', updatePosition, false);
+	updateMouse(e) {
+		player.updateAngle(e.movementX, e.movementY);
 	}
 }
-
-function updatePosition(e) {
-	player.updateAngle(e.movementX, controller);
-	camera.update(e.movementX, e.movementY, controller);
-	// console.log(camera.xAngle);
-}
-/* END mouse position tracking */

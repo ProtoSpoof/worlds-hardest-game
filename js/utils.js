@@ -1,8 +1,5 @@
 const m4 = twgl.m4;
 const v3 = twgl.v3;
-const canvas = document.getElementById('game-space');
-const gl = canvas.getContext('webgl2');
-canvas.requestPointerLock = canvas.requestPointerLock || canvas.mozRequestPointerLock;
 
 function deg2rad(deg) {
 	return (Math.PI * deg) / 180;

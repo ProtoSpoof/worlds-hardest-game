@@ -1,4 +1,4 @@
-const characterShaders = [
+const objectShaders = [
 	(vs = `#version 300 es
 precision mediump float;
 in vec3 position;
@@ -39,6 +39,7 @@ void main () {
       outColor = vec4(color, 1);
     }`),
 ];
+const objectProgramInfo = twgl.createProgramInfo(gl, objectShaders);
 
 const skyboxShaders = [
 	(vs = `#version 300 es

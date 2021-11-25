@@ -32,7 +32,11 @@ function render(time) {
 	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
 	player.render(gl, light, viewMatrix, projectionMatrix);
-	gameObjects.forEach((object) => {
+	gameObjects.forEach((object, index) => {
+		if (player.collide(object)) {
+			gameObjects.splice(index, 1);
+			return;
+		}
 		object.render(gl, light, viewMatrix, projectionMatrix);
 	});
 	skybox.render(gl, invViewProjectionMatrix);

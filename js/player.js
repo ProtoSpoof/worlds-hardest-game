@@ -37,4 +37,14 @@ class Player extends GameObject {
 		}
 		this.camera.move(this.pos[0], this.pos[1], this.pos[2]);
 	}
+
+	collide(obj) {
+		// The simple collision cases
+		if (this.squaredDist(obj) > (this.dia / 2 + obj.size / 2) * (this.dia / 2 + obj.size / 2)) return false;
+
+		if (this.squaredDist(obj) <= (this.size / 2 + obj.size / 2) * (this.size / 2 + obj.size / 2)) return true;
+
+		// Further Analysis Needed
+		return false;
+	}
 }

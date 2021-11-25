@@ -21,6 +21,7 @@ class GameObject {
 		};
 		this.shininess = shininess;
 		this.ks = ks;
+		this.size = size;
 	}
 
 	render(gl, light, viewMatrix, projectionMatrix, modelMatrix = null) {
@@ -44,5 +45,12 @@ class GameObject {
 		twgl.setUniforms(this.programInfo, uniforms);
 		twgl.setBuffersAndAttributes(gl, this.programInfo, this.bufferInfo);
 		twgl.drawBufferInfo(gl, this.bufferInfo);
+	}
+	squaredDist(obj) {
+		return (
+			Math.pow(this.pos[0] - obj.pos[0], 2) +
+			Math.pow(this.pos[1] - obj.pos[1], 2) +
+			Math.pow(this.pos[2] - obj.pos[2], 2)
+		);
 	}
 }

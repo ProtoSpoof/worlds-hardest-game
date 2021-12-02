@@ -1,12 +1,12 @@
 class Level {
-	constructor(enemies, coins, lights, finish, checkpoints, nextLevel = null) {
+	constructor(enemies, coins, pointLights, finish, checkpoints, nextLevel = null) {
 		this.canComplete = false;
 		this.levelCompleted = false;
 		this.enemies = enemies;
 		this.coins = coins;
 		this.collectedCoins = new Array(coins.length).fill(false);
 		this.numCoins = coins.length;
-		this.lights = [new Light(0, 0, 0, 0, '#FFFFFF'), ...lights];
+		this.pointLights = pointLights;
 		this.nextLevel = nextLevel;
 		this.checkpoints = checkpoints;
 		this.finish = finish;
@@ -14,11 +14,11 @@ class Level {
 
 	render(gl, viewMatrix, projectionMatrix) {
 		this.enemies.forEach((enemy, index) => {
-			enemy.render(gl, this.lights, viewMatrix, projectionMatrix);
+			enemy.render(gl, this.pointLights, viewMatrix, projectionMatrix);
 		});
 		this.coins.forEach((coin, index) => {
 			// Only render Coins that have not been collected
-			if (!this.collectedCoins[index]) coin.render(gl, this.lights, viewMatrix, projectionMatrix);
+			if (!this.collectedCoins[index]) coin.render(gl, this.pointLights, viewMatrix, projectionMatrix);
 		});
 	}
 
@@ -49,6 +49,6 @@ class Level {
 	}
 
 	getLights() {
-		return this.lights;
+		return this.pointLights;
 	}
 }

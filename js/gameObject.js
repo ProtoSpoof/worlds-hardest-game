@@ -8,8 +8,8 @@ class GameObject {
 		color = '#ff0000',
 		size = 1,
 		ambientIntesity = 0.1,
-		shininess = 100,
-		ks = 0.2
+		shininess = 0.1,
+		ks = 0.9
 	) {
 		this.programInfo = objectProgramInfo;
 		this.pos = [x + size / 2, y, z];
@@ -27,6 +27,15 @@ class GameObject {
 	render(gl, lights, viewMatrix, projectionMatrix, modelMatrix = null) {
 		gl.useProgram(this.programInfo.program);
 		const lookAt = m4.inverse(viewMatrix);
+		const pointLights = [
+			...lights.map((light) => {
+				return {
+					pos: light.pos,
+					color: light.color,
+				};
+			}),
+			...Array(100 - lights.length, { pos: [0, 0, 0], color: [0, 0, 0] }),
+		];
 		const uniforms = {
 			modelMatrix: modelMatrix
 				? modelMatrix
@@ -34,24 +43,7 @@ class GameObject {
 			materialColor: this.materialProperties.materialColor,
 			ambientIntensity: this.materialProperties.ambientIntensity,
 			numLights: lights.length,
-			lightColors: [
-				lights.map((light) => {
-					return v3.create(...light.color);
-				}),
-				...Array(100 - lights.length, v3.create()),
-			],
-			lightPos: [
-				lights.map((light) => {
-					return v3.create(...light.pos);
-				}),
-				...Array(100 - lights.length, v3.create()),
-			],
-			lightTypes: [
-				lights.map((light) => {
-					return light.type == 'point' ? 1.0 : 0.0;
-				}),
-				...Array(100 - lights.length).fill(1.0),
-			],
+			pointLights,
 			ks: this.ks,
 			shininess: this.shininess,
 			eyePos: [lookAt[12], lookAt[13], lookAt[14]],

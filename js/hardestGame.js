@@ -9,8 +9,8 @@ let curLevel = 0;
 let levels = [];
 levels.push(
 	new Level(tempEnemies, tempCoins, [
-		new Light(100, 0, 0, 0, '#FFFFFF', 'point'),
-		new Light(100, 50, 50, 50, '#FFFFFF', 'directional'),
+		new Light(100, 0, 0, 0, '#FF0000', 'point'),
+		new Light(100, 50, 0, 0, '#FF0000', 'point'),
 	])
 );
 
@@ -18,12 +18,19 @@ levels.push(
 const player = new Player(new Controller(), new Camera(-30, 0, canvas), 0, 0, 0, '#FF0000', 1);
 const skybox = new Skybox(
 	skyboxShaders,
-	document.getElementById('skyboxFront'),
-	document.getElementById('skyboxBack'),
-	document.getElementById('skyboxTop'),
-	document.getElementById('skyboxBottom'),
-	document.getElementById('skyboxLeft'),
-	document.getElementById('skyboxRight')
+	// 'skyboxFront',
+	'../assets/front.png',
+	'../assets/back.png',
+	'../assets/top.png',
+	'../assets/bottom.png',
+	'../assets/left.png',
+	'../assets/right.png'
+
+	// document.getElementById('skyboxBack'),
+	// document.getElementById('skyboxTop'),
+	// document.getElementById('skyboxBottom'),
+	// document.getElementById('skyboxLeft'),
+	// document.getElementById('skyboxRight')
 );
 
 // Game Loop

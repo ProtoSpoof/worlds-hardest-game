@@ -1,10 +1,20 @@
-let gameObjects = [];
+let tempEnemies = [];
+let tempCoins = [];
 for (let i = 0; i < 10; i++) {
-	gameObjects.push(new Enemy(Math.random() * 100 - 50, 0, Math.random() * 100 - 50, '#0000FF', 1));
-	gameObjects.push(new Coin(Math.random() * 100 - 50, 0, Math.random() * 100 - 50, 0, '#FFFF00', 0.7));
+	tempEnemies.push(new Enemy(Math.random() * 100 - 50, 0, Math.random() * 100 - 50, '#0000FF', 1));
+	tempCoins.push(new Coin(Math.random() * 100 - 50, 0, Math.random() * 100 - 50, 0, '#FFFF00', 0.7));
 }
+
+let curLevel = 0;
+let levels = [];
+levels.push(
+	new Level(tempEnemies, tempCoins, [
+		new Light(100, 0, 0, 0, '#FFFFFF', 'point'),
+		new Light(100, 50, 50, 50, '#FFFFFF', 'directional'),
+	])
+);
+
 // const level = Level(characterShaders, '#00ff00');
-const light = new Light(100, 0, 0, 0, '#FFFFFF', 'point');
 const player = new Player(new Controller(), new Camera(-30, 0, canvas), 0, 0, 0, '#FF0000', 1);
 const skybox = new Skybox(
 	skyboxShaders,
@@ -16,7 +26,8 @@ const skybox = new Skybox(
 	document.getElementById('skyboxRight')
 );
 
-function render(time) {
+// Game Loop
+function tick(time) {
 	time *= 0.001;
 	player.move();
 	const viewMatrix = getViewMatrix(player, player.camera);
@@ -31,17 +42,12 @@ function render(time) {
 	gl.clearColor(...hex2rgb('#d3d3d3'), 1);
 	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-	player.render(gl, light, viewMatrix, projectionMatrix);
-	gameObjects.forEach((object, index) => {
-		if (player.collide(object)) {
-			gameObjects.splice(index, 1);
-			return;
-		}
-		object.render(gl, light, viewMatrix, projectionMatrix);
-	});
+	player.render(gl, levels[curLevel].getLights(), viewMatrix, projectionMatrix);
+	levels[curLevel].checkCollisions(player);
+	levels[curLevel].render(gl, viewMatrix, projectionMatrix, player);
 	skybox.render(gl, invViewProjectionMatrix);
 
-	requestAnimationFrame(render);
+	requestAnimationFrame(tick);
 }
 
-requestAnimationFrame(render);
+requestAnimationFrame(tick);

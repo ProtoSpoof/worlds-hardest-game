@@ -5,6 +5,7 @@ class Player extends GameObject {
 		this.camera = camera;
 		this.dia = Math.sqrt(3) * size;
 		this.movementSpeed = 0.1;
+		this.deaths = 0;
 	}
 
 	updateAngle(xOff, yOff) {
@@ -15,6 +16,12 @@ class Player extends GameObject {
 		this.camera.xAngle -= yOff * this.controller.sensitivity;
 		if (this.camera.xAngle <= -90) this.camera.xAngle = -89.9;
 		else if (this.camera.xAngle >= 0) this.camera.xAngle = 0;
+	}
+
+	setPosition(pos) {
+		this.pos[0] = pos[0];
+		this.pos[1] = pos[1];
+		this.pos[2] = pos[2];
 	}
 
 	move() {
@@ -46,5 +53,9 @@ class Player extends GameObject {
 
 		// Further Analysis Needed
 		return false;
+	}
+
+	die() {
+		this.deaths++;
 	}
 }

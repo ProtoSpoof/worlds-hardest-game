@@ -22,21 +22,43 @@ void main () {
     in vec3 fragNormal;
     in vec3 fragPosition;
     uniform vec3 materialColor;
-    uniform vec4 lightInfo;
-    uniform vec3 specularColor;
+    uniform int numLights;
+    uniform vec3 lightColors[100];
+    uniform vec3 lightPos[100];
+    uniform float lightTypes[100];
     uniform vec3 eyePos;
     uniform float ks, shininess;
     uniform float ambientIntensity;
+
+    vec3 calcLight (float type, vec3 pos, vec3 specularColor, vec3 N, vec3 V) {
+        vec3 L = (type == 0. ? normalize(pos.xyz - fragPosition) : normalize(pos.xyz));
+        vec3 H = normalize(L + V);
+        vec3 diffuseLighting = ((1. - ks) * materialColor * clamp(dot(L, N), 0., 1.));
+        vec3 specularLighting = ks * (specularColor * pow(clamp(dot(H, N), 0., 1.), shininess));
+        vec3 ambientLighting = materialColor * ambientIntensity;
+        return ambientLighting + diffuseLighting + specularLighting;
+    }
+
+
     void main () {
-      vec3 N = normalize(fragNormal);
-      vec3 L = (lightInfo.w == 0. ? normalize(lightInfo.xyz) : normalize(lightInfo.xyz - fragPosition));
-      vec3 V = normalize(eyePos - fragPosition);
-      vec3 H = normalize(L + V);
-      vec3 ambientLighting = ambientIntensity * materialColor;
-      vec3 diffuseLighting = materialColor * clamp(dot(L, N), 0., 1.);
-      vec3 specularLighting = specularColor * pow(clamp(dot(H, N), 0., 1.), shininess);
-      vec3 color = (1.-ks) * diffuseLighting + (ks * specularLighting) + ambientLighting;
-      outColor = vec4(color, 1);
+        vec3 N = normalize(fragNormal);
+        vec3 V = normalize(eyePos - fragPosition);
+        vec3 color = vec3(0.0);
+      
+        for(int i = 1; i < numLights; i++)
+            color += calcLight(lightTypes[i], lightPos[i], lightColors[i], N, V);
+
+        // vec3 N = normalize(fragNormal);
+        // vec3 L = (lightTypes[0] == 1. ? normalize(lightPos[0].xyz - fragPosition) : normalize(lightPos[0].xyz));
+        // vec3 V = normalize(eyePos - fragPosition);
+        // vec3 H = normalize(L + V);
+
+        // vec3 diffuseLighting = materialColor * clamp(dot(L, N), 0., 1.);
+        // vec3 specularLighting = lightColors[0] * pow(clamp(dot(H, N), 0., 1.), shininess);
+
+        // vec3 color = materialColor * ambientIntensity + (1.-ks) * diffuseLighting + (ks * specularLighting);
+
+        outColor = vec4(color, 1);
     }`),
 ];
 const objectProgramInfo = twgl.createProgramInfo(gl, objectShaders);

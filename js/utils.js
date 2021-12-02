@@ -1,5 +1,6 @@
 const m4 = twgl.m4;
 const v3 = twgl.v3;
+const v4 = twgl.v4;
 
 function deg2rad(deg) {
 	return (Math.PI * deg) / 180;

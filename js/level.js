@@ -50,7 +50,7 @@ class Level {
 			if (this.canComplete && player.collide(finish)) {
 				this.reset(player);
 				// change below to implement more levels
-				if (curLevel < levels.length) curLevel++;
+				if (curLevel < levels.length-1) curLevel++;
 			}
 		});
 	}
@@ -205,19 +205,58 @@ function getEnemies2() {
 
 	// individual level walls
 	for (let i = -2; i < 14; i++) tempEnemies.push(new Wall(-i, 0, i - 14, '#010114', 1));
-	for (let i = 3; i < 16; i++)
-		//tempEnemies.push(new Wall(-i,0,-i,'#010114', 1));
+	
+	// individual enemies
+	// animate these
 
-		// individual enemies
-		// animate these
-
-		tempEnemies.push(new Enemy(1, 0, -8, '#0000FF', 1));
-
-	tempEnemies.push(new Enemy(1, 0, -2, '#0000FF', 1));
-
-	tempEnemies.push(new Enemy(-12, 0, -15, '#0000FF', 1));
-
-	tempEnemies.push(new Enemy(-6, 0, -15, '#0000FF', 1));
+	tempEnemies.push(new MovingEnemy(
+		[
+			[1, 0, -2],
+			[-10, 0, -2],
+		],
+		'#0000FF',
+		1
+	));
+	tempEnemies.push(new MovingEnemy(
+		[
+			[1, 0, -8],
+			[-4, 0, -8],
+		],
+		'#0000FF',
+		1
+	));
+	tempEnemies.push(new MovingEnemy(
+		[
+			[-5.5, 0, -15],
+			[-5.5, 0, -10],
+		],
+		'#0000FF',
+		1
+	));
+	tempEnemies.push(new MovingEnemy(
+		[
+			[-11.5, 0, -15],
+			[-11.5, 0, -3],
+		],
+		'#0000FF',
+		1
+	));
+	tempEnemies.push(new MovingEnemy(
+		[
+			[-7, 0, -5],
+			[1, 0, -5],
+		],
+		'#0000FF',
+		1
+	));
+	tempEnemies.push(new MovingEnemy(
+		[
+			[-8.5, 0, -6],
+			[-8.5, 0, -15],
+		],
+		'#0000FF',
+		1
+	));
 
 	// Checkerboard pt 1
 	for (let i = -2; i < 17; i += 2) {
@@ -299,36 +338,85 @@ function getEnemies3() {
 	}
 	for (let i = -16; i < -1; i++) {
 		tempEnemies.push(new Wall(i, 0, -6, '#010114', 1));
-		tempEnemies.push(new Wall(i, 0, -7, '#010114', 1));
 		tempEnemies.push(new Wall(i, 0, -8, '#010114', 1));
+	}
+	for (let i = -16; i < -3; i++) {
+		tempEnemies.push(new Wall(i, 0, -7, '#010114', 1));
 	}
 	// individual enemies
 	// animate these
-
-	tempEnemies.push(new Enemy(1, 0, -7, '#0000FF', 1));
-	tempEnemies.push(new Enemy(-3, 0, -0.5, '#0000FF', 1));
-	tempEnemies.push(new Enemy(-8, 0, -0.5, '#0000FF', 1));
-	tempEnemies.push(new Enemy(-13, 0, -0.5, '#0000FF', 1));
-	tempEnemies.push(new Enemy(-5.5, 0, 0.5, '#0000FF', 1));
-	tempEnemies.push(new Enemy(-10.5, 0, 0.5, '#0000FF', 1));
-
-	tempEnemies.push(new Enemy(-3, 0, -4.5, '#0000FF', 1));
-	tempEnemies.push(new Enemy(-8, 0, -4.5, '#0000FF', 1));
-	tempEnemies.push(new Enemy(-13, 0, -4.5, '#0000FF', 1));
-	tempEnemies.push(new Enemy(-5.5, 0, -3.5, '#0000FF', 1));
-	tempEnemies.push(new Enemy(-10.5, 0, -3.5, '#0000FF', 1));
-
-	tempEnemies.push(new Enemy(-3, 0, -9.5, '#0000FF', 1));
-	tempEnemies.push(new Enemy(-8, 0, -9.5, '#0000FF', 1));
-	tempEnemies.push(new Enemy(-13, 0, -9.5, '#0000FF', 1));
-	tempEnemies.push(new Enemy(-5.5, 0, -10.5, '#0000FF', 1));
-	tempEnemies.push(new Enemy(-10.5, 0, -10.5, '#0000FF', 1));
-
-	tempEnemies.push(new Enemy(-3, 0, -13.5, '#0000FF', 1));
-	tempEnemies.push(new Enemy(-8, 0, -13.5, '#0000FF', 1));
-	tempEnemies.push(new Enemy(-13, 0, -13.5, '#0000FF', 1));
-	tempEnemies.push(new Enemy(-5.5, 0, -14.5, '#0000FF', 1));
-	tempEnemies.push(new Enemy(-10.5, 0, -14.5, '#0000FF', 1));
+	tempEnemies.push(new MovingEnemy(
+		[
+			[1.5, 0, -7],
+			[-2.5, 0, -7],
+		],
+		'#0000FF',
+		1
+	));
+	tempEnemies.push(new MovingEnemy(
+		[
+			[-3, 0, -1],
+			[-13, 0, -1],
+		],
+		'#0000FF',
+		1
+	));
+	tempEnemies.push(new MovingEnemy(
+		[
+			[-13, 0, 1],
+			[-3, 0, 1],
+		],
+		'#0000FF',
+		1
+	));
+	tempEnemies.push(new MovingEnemy(
+		[
+			[-3, 0, -3],
+			[-13, 0, -3],
+		],
+		'#0000FF',
+		1
+	));
+	tempEnemies.push(new MovingEnemy(
+		[
+			[-13, 0, -5],
+			[-3, 0, -5],
+		],
+		'#0000FF',
+		1
+	));
+	tempEnemies.push(new MovingEnemy(
+		[
+			[-13, 0, -9],
+			[-3, 0, -9],
+		],
+		'#0000FF',
+		1
+	));
+	tempEnemies.push(new MovingEnemy(
+		[
+			[-3, 0, -11],
+			[-13, 0, -11],
+		],
+		'#0000FF',
+		1
+	));
+	tempEnemies.push(new MovingEnemy(
+		[
+			[-3, 0, -13],
+			[-13, 0, -13],
+		],
+		'#0000FF',
+		1
+	));
+	tempEnemies.push(new MovingEnemy(
+		[
+			[-13, 0, -15],
+			[-3, 0, -15],
+		],
+		'#0000FF',
+		1
+	));
 
 	// Checkerboard pt 1
 	for (let i = -2; i < 17; i += 2) {

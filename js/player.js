@@ -57,8 +57,8 @@ class Player extends GameObject {
 
 	die() {
 		this.deaths++;
-		this.angle = 0;
-		this.camera.xAngle = -25;
 		this.camera.yAngle = 0;
+		this.camera.xAngle = -30;
+		this.angle = 0;
 	}
 }

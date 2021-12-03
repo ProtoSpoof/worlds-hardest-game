@@ -1,24 +1,21 @@
-let tempEnemies = [];
-let tempCoins = [];
-//for (let i = 0; i < 10; i++) {
-//	tempEnemies.push(new Enemy(Math.random() * 100 - 50, 0, Math.random() * 100 - 50, '#0000FF', 1));
-//	tempCoins.push(new Coin(Math.random() * 100 - 50, 0, Math.random() * 100 - 50, 0, '#FFFF00', 0.7));
-//}
-for(let i = -2; i < 10; i++)
-{
-	tempEnemies.push(new Enemy(2,0,-i,'#0000FF', 1));
-	tempEnemies.push(new Enemy(-10,0,-i,'#0000FF', 1));
-	tempEnemies.push(new Enemy(-i,0,2,'#0000FF', 1));
-	tempEnemies.push(new Enemy(-i,0,-10,'#0000FF', 1));
-}
-tempEnemies.push(new Enemy(-10,0,-10,'#0000FF', 1));
-
 let curLevel = 0;
 let levels = [];
 levels.push(
-	new Level(tempEnemies, tempCoins, [
-		new Light(100, 0, 0, 0, '#FFFFFF', 'point'),
-		new Light(100, 50, 50, 50, '#FFFFFF', 'directional'),
+	new Level(getEnemies(), getCoins(), [
+		new Light(100, 0, 0, 0, '#FF0000', 'point'),
+		new Light(100, 50, 0, 0, '#FF0000', 'point'),
+	])
+);
+levels.push(
+	new Level(getEnemies2(), getCoins2(), [
+		new Light(100, 0, 0, 0, '#FF0000', 'point'),
+		new Light(100, 50, 0, 0, '#FF0000', 'point'),
+	])
+);
+levels.push(
+	new Level(getEnemies3(), getCoins3(), [
+		new Light(100, 0, 0, 0, '#FF0000', 'point'),
+		new Light(100, 50, 0, 0, '#FF0000', 'point'),
 	])
 );
 
@@ -26,12 +23,19 @@ levels.push(
 const player = new Player(new Controller(), new Camera(-30, 0, canvas), 0, 0, 0, '#FF0000', 1);
 const skybox = new Skybox(
 	skyboxShaders,
-	document.getElementById('skyboxFront'),
-	document.getElementById('skyboxBack'),
-	document.getElementById('skyboxTop'),
-	document.getElementById('skyboxBottom'),
-	document.getElementById('skyboxLeft'),
-	document.getElementById('skyboxRight')
+	// 'skyboxFront',
+	'../assets/front.png',
+	'../assets/back.png',
+	'../assets/top.png',
+	'../assets/bottom.png',
+	'../assets/left.png',
+	'../assets/right.png'
+
+	// document.getElementById('skyboxBack'),
+	// document.getElementById('skyboxTop'),
+	// document.getElementById('skyboxBottom'),
+	// document.getElementById('skyboxLeft'),
+	// document.getElementById('skyboxRight')
 );
 
 // Game Loop

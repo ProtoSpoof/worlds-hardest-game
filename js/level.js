@@ -3,6 +3,7 @@ class Level {
 		this.canComplete = false;
 		this.levelCompleted = false;
 		this.enemies = enemies;
+		this.originalEnemies = [...enemies];
 		this.coins = coins;
 		this.collectedCoins = new Array(coins.length).fill(false);
 		this.numCoinsRemaining = coins.length;
@@ -57,6 +58,7 @@ class Level {
 	reset(player) {
 		this.collectedCoins.fill(false);
 		this.numCoinsRemaining = this.coins.length;
+		this.enemies = [...this.originalEnemies];
 		player.setPosition([0, 0, 0]);
 	}
 
@@ -97,8 +99,26 @@ function getEnemies() {
 
 	// individual enemies
 	// animate these 2
-	tempEnemies.push(new Enemy(-11, 0, -9, '#0000FF', 1));
-	tempEnemies.push(new Enemy(-11, 0, -5, '#0000FF', 1));
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[-10, 0, -9],
+				[-3, 0, -9],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[-10, 0, -5],
+				[-3, 0, -5],
+			],
+			'#0000FF',
+			1
+		)
+	);
 
 	tempEnemies.push(new Enemy(-0.5, 0, -8, '#0000FF', 1));
 	tempEnemies.push(new Enemy(-0.5, 0, -2, '#0000FF', 1));

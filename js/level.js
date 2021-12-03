@@ -50,7 +50,7 @@ class Level {
 			if (this.canComplete && player.collide(finish)) {
 				this.reset(player);
 				// change below to implement more levels
-				if (curLevel < levels.length-1) curLevel++;
+				if (curLevel < levels.length - 1) curLevel++;
 			}
 		});
 	}
@@ -59,11 +59,11 @@ class Level {
 		this.collectedCoins.fill(false);
 		this.numCoinsRemaining = this.coins.length;
 		this.enemies = [...this.originalEnemies];
-		player.setPosition([0, 0, 0]);
+		player.setPosition([0, 0.01, 0]);
 	}
 
 	start(player) {
-		player.setPosition([0, 0, 0]);
+		player.setPosition([0, 0.01, 0]);
 	}
 
 	getLights() {
@@ -205,58 +205,70 @@ function getEnemies2() {
 
 	// individual level walls
 	for (let i = -2; i < 14; i++) tempEnemies.push(new Wall(-i, 0, i - 14, '#010114', 1));
-	
+
 	// individual enemies
 	// animate these
 
-	tempEnemies.push(new MovingEnemy(
-		[
-			[1, 0, -2],
-			[-10, 0, -2],
-		],
-		'#0000FF',
-		1
-	));
-	tempEnemies.push(new MovingEnemy(
-		[
-			[1, 0, -8],
-			[-4, 0, -8],
-		],
-		'#0000FF',
-		1
-	));
-	tempEnemies.push(new MovingEnemy(
-		[
-			[-5.5, 0, -15],
-			[-5.5, 0, -10],
-		],
-		'#0000FF',
-		1
-	));
-	tempEnemies.push(new MovingEnemy(
-		[
-			[-11.5, 0, -15],
-			[-11.5, 0, -3],
-		],
-		'#0000FF',
-		1
-	));
-	tempEnemies.push(new MovingEnemy(
-		[
-			[-7, 0, -5],
-			[1, 0, -5],
-		],
-		'#0000FF',
-		1
-	));
-	tempEnemies.push(new MovingEnemy(
-		[
-			[-8.5, 0, -6],
-			[-8.5, 0, -15],
-		],
-		'#0000FF',
-		1
-	));
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[1, 0, -2],
+				[-10, 0, -2],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[1, 0, -8],
+				[-4, 0, -8],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[-5.5, 0, -15],
+				[-5.5, 0, -10],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[-11.5, 0, -15],
+				[-11.5, 0, -3],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[-7, 0, -5],
+				[1, 0, -5],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[-8.5, 0, -6],
+				[-8.5, 0, -15],
+			],
+			'#0000FF',
+			1
+		)
+	);
 
 	// Checkerboard pt 1
 	for (let i = -2; i < 17; i += 2) {
@@ -345,78 +357,96 @@ function getEnemies3() {
 	}
 	// individual enemies
 	// animate these
-	tempEnemies.push(new MovingEnemy(
-		[
-			[1.5, 0, -7],
-			[-2.5, 0, -7],
-		],
-		'#0000FF',
-		1
-	));
-	tempEnemies.push(new MovingEnemy(
-		[
-			[-3, 0, -1],
-			[-13, 0, -1],
-		],
-		'#0000FF',
-		1
-	));
-	tempEnemies.push(new MovingEnemy(
-		[
-			[-13, 0, 1],
-			[-3, 0, 1],
-		],
-		'#0000FF',
-		1
-	));
-	tempEnemies.push(new MovingEnemy(
-		[
-			[-3, 0, -3],
-			[-13, 0, -3],
-		],
-		'#0000FF',
-		1
-	));
-	tempEnemies.push(new MovingEnemy(
-		[
-			[-13, 0, -5],
-			[-3, 0, -5],
-		],
-		'#0000FF',
-		1
-	));
-	tempEnemies.push(new MovingEnemy(
-		[
-			[-13, 0, -9],
-			[-3, 0, -9],
-		],
-		'#0000FF',
-		1
-	));
-	tempEnemies.push(new MovingEnemy(
-		[
-			[-3, 0, -11],
-			[-13, 0, -11],
-		],
-		'#0000FF',
-		1
-	));
-	tempEnemies.push(new MovingEnemy(
-		[
-			[-3, 0, -13],
-			[-13, 0, -13],
-		],
-		'#0000FF',
-		1
-	));
-	tempEnemies.push(new MovingEnemy(
-		[
-			[-13, 0, -15],
-			[-3, 0, -15],
-		],
-		'#0000FF',
-		1
-	));
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[1.5, 0, -7],
+				[-2.5, 0, -7],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[-3, 0, -1],
+				[-13, 0, -1],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[-13, 0, 1],
+				[-3, 0, 1],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[-3, 0, -3],
+				[-13, 0, -3],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[-13, 0, -5],
+				[-3, 0, -5],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[-13, 0, -9],
+				[-3, 0, -9],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[-3, 0, -11],
+				[-13, 0, -11],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[-3, 0, -13],
+				[-13, 0, -13],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[-13, 0, -15],
+				[-3, 0, -15],
+			],
+			'#0000FF',
+			1
+		)
+	);
 
 	// Checkerboard pt 1
 	for (let i = -2; i < 17; i += 2) {

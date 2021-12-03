@@ -20,6 +20,9 @@ class Level {
 			// Only render Coins that have not been collected
 			if (!this.collectedCoins[index]) coin.render(gl, this.pointLights, viewMatrix, projectionMatrix);
 		});
+		this.finish.forEach((finish, index) => {
+			finish.render(gl, this.pointLights, viewMatrix, projectionMatrix);
+		});
 	}
 
 	collectCoin(index) {
@@ -36,6 +39,15 @@ class Level {
 				player.die();
 				this.reset(player);
 			}
+		});
+		this.finish.forEach((finish) => {
+		if(player.collide(finish))
+		{
+			this.reset(player);
+			// change below to implement more levels
+			if(curLevel < 2) 
+				curLevel++;
+		}
 		});
 	}
 

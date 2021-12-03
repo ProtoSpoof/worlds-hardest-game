@@ -1,22 +1,40 @@
 let curLevel = 0;
+// sorry too lazy to bring these over to level.js
+// LVL 1 finish
+let finishes = [];
+finishes.push(new Wall(-13,-0.5,-15, '#7FFF00', 1));
+finishes.push(new Wall(-14,-0.5,-15, '#7FFF00', 1));
+finishes.push(new Wall(-15,-0.5,-15, '#7FFF00', 1));
+// LVL 2 finish
+let finishes2 = [];
+finishes2.push(new Wall(0,-0.5,-15, '#7FFF00', 1));
+finishes2.push(new Wall(-1,-0.5,-15, '#7FFF00', 1));
+finishes2.push(new Wall(-1,-0.5,-14, '#7FFF00', 1));
+// LVL 3 finish
+let finishes3 = [];
+finishes3.push(new Wall(1,-0.5,-15, '#7FFF00', 1));
+finishes3.push(new Wall(1,-0.5,-13, '#7FFF00', 1));
+finishes3.push(new Wall(1,-0.5,-14, '#7FFF00', 1));
+
+// levels 1-3
 let levels = [];
 levels.push(
 	new Level(getEnemies(), getCoins(), [
 		new Light(100, 0, 0, 0, '#FF0000', 'point'),
 		new Light(100, 50, 0, 0, '#FF0000', 'point'),
-	])
+	], finishes)
 );
 levels.push(
 	new Level(getEnemies2(), getCoins2(), [
 		new Light(100, 0, 0, 0, '#FF0000', 'point'),
 		new Light(100, 50, 0, 0, '#FF0000', 'point'),
-	])
+	], finishes2)
 );
 levels.push(
 	new Level(getEnemies3(), getCoins3(), [
 		new Light(100, 0, 0, 0, '#FF0000', 'point'),
 		new Light(100, 50, 0, 0, '#FF0000', 'point'),
-	])
+	], finishes3)
 );
 
 // const level = Level(characterShaders, '#00ff00');

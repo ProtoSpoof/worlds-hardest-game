@@ -1,6 +1,6 @@
 class Player extends GameObject {
 	constructor(controller, camera, x = 0, y = 0, z = 0, color = '#ff0000', size = 1, angle = 0) {
-		super(twgl.primitives.createCubeBufferInfo(gl, size), x, y, z, angle, color, size, 0.1, 50, 0.2);
+		super(twgl.primitives.createCubeBufferInfo(gl, size), x, y, z, angle, color, size, 0.05, 95, 0.5);
 		this.controller = controller;
 		this.camera = camera;
 		this.dia = Math.sqrt(3) * size;
@@ -56,6 +56,7 @@ class Player extends GameObject {
 	}
 
 	die() {
+		deathCounter.innerHTML = this.deaths;
 		this.deaths++;
 		this.camera.yAngle = 0;
 		this.camera.xAngle = -30;

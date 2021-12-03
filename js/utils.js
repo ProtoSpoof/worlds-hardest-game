@@ -1,6 +1,8 @@
 const m4 = twgl.m4;
 const v3 = twgl.v3;
 const v4 = twgl.v4;
+const coinCounter = document.getElementById('coin-counter');
+const deathCounter = document.getElementById('death-counter');
 
 function deg2rad(deg) {
 	return (Math.PI * deg) / 180;

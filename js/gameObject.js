@@ -12,7 +12,7 @@ class GameObject {
 		ks = 0.9
 	) {
 		this.programInfo = objectProgramInfo;
-		this.pos = [x + size / 2, y, z];
+		this.pos = [x, y, z];
 		this.angle = angle;
 		this.bufferInfo = bufferInfo;
 		this.materialProperties = {

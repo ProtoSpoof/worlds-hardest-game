@@ -102,7 +102,7 @@ function getEnemies() {
 	tempEnemies.push(
 		new MovingEnemy(
 			[
-				[-10, 0, -9],
+				[-11, 0, -9],
 				[-3, 0, -9],
 			],
 			'#0000FF',
@@ -112,7 +112,7 @@ function getEnemies() {
 	tempEnemies.push(
 		new MovingEnemy(
 			[
-				[-10, 0, -5],
+				[-11, 0, -5],
 				[-3, 0, -5],
 			],
 			'#0000FF',
@@ -213,7 +213,7 @@ function getEnemies2() {
 		new MovingEnemy(
 			[
 				[1, 0, -2],
-				[-10, 0, -2],
+				[-11, 0, -2],
 			],
 			'#0000FF',
 			1
@@ -223,7 +223,7 @@ function getEnemies2() {
 		new MovingEnemy(
 			[
 				[1, 0, -8],
-				[-4, 0, -8],
+				[-5, 0, -8],
 			],
 			'#0000FF',
 			1
@@ -232,8 +232,8 @@ function getEnemies2() {
 	tempEnemies.push(
 		new MovingEnemy(
 			[
-				[-5.5, 0, -15],
-				[-5.5, 0, -10],
+				[-6, 0, -15],
+				[-6, 0, -10],
 			],
 			'#0000FF',
 			1
@@ -242,8 +242,8 @@ function getEnemies2() {
 	tempEnemies.push(
 		new MovingEnemy(
 			[
-				[-11.5, 0, -15],
-				[-11.5, 0, -3],
+				[-12, 0, -15],
+				[-12, 0, -3],
 			],
 			'#0000FF',
 			1
@@ -252,7 +252,7 @@ function getEnemies2() {
 	tempEnemies.push(
 		new MovingEnemy(
 			[
-				[-7, 0, -5],
+				[-8, 0, -5],
 				[1, 0, -5],
 			],
 			'#0000FF',
@@ -262,8 +262,8 @@ function getEnemies2() {
 	tempEnemies.push(
 		new MovingEnemy(
 			[
-				[-8.5, 0, -6],
-				[-8.5, 0, -15],
+				[-9, 0, -6],
+				[-9, 0, -15],
 			],
 			'#0000FF',
 			1
@@ -360,8 +360,8 @@ function getEnemies3() {
 	tempEnemies.push(
 		new MovingEnemy(
 			[
-				[1.5, 0, -7],
-				[-2.5, 0, -7],
+				[1, 0, -7],
+				[-3, 0, -7],
 			],
 			'#0000FF',
 			1
@@ -496,6 +496,529 @@ function getEnemies3() {
 		tempEnemies.push(new Wall(-i, -1, -2, '#00FFFF', 1));
 		tempEnemies.push(new Wall(-i, -1, -0, '#00FFFF', 1));
 		tempEnemies.push(new Wall(-i, -1, 2, '#00FFFF', 1));
+	}
+	return tempEnemies;
+}
+// LVL 4
+function getCoins4() {
+	let tempCoins = [];
+	// individual level coins
+	tempCoins.push(new Coin(0, 0, -7, '#FFFF00', 1));
+
+	return tempCoins;
+}
+function getEnemies4() {
+	let tempEnemies = [];
+
+	// BORDER Walls
+	for (let i = -2; i < 16; i++) {
+		tempEnemies.push(new Wall(2, 0, -i, '#010114', 1));
+		tempEnemies.push(new Wall(-2, 0, -i, '#010114', 1));
+	}
+	for (let i = -2; i < 3; i++) {
+		tempEnemies.push(new Wall(-i, 0, 2, '#010114', 1));
+		tempEnemies.push(new Wall(-i, 0, -16, '#010114', 1));
+	}
+
+	// individual level walls
+
+	// individual enemies
+	// animate these
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[1, 0, -13],
+				[1, 0, -4],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[-1, 0, -7],
+				[-1, 0, -13],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[-1, 0, -1],
+				[-1, 0, -7],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	
+	// Checkerboard pt 1
+	for (let i = -2; i < 4; i += 2) {
+		tempEnemies.push(new Wall(-i, -1, -16, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -14, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -12, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -10, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -8, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -6, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -4, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -2, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 0, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 2, '#FFFFFF', 1));
+
+		// BLUES
+		tempEnemies.push(new Wall(-i, -1, -15, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -13, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -11, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -9, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -7, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -5, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -3, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -1, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 1, '#00FFFF', 1));
+	}
+
+	// Checkerboard pt 2
+	for (let i = -1; i < 2; i += 2) {
+		tempEnemies.push(new Wall(-i, -1, -15, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -13, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -11, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -9, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -7, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -5, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -3, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -1, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 1, '#FFFFFF', 1));
+
+		// BLUES
+		tempEnemies.push(new Wall(-i, -1, -16, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -14, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -12, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -10, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -8, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -6, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -4, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -2, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -0, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 2, '#00FFFF', 1));
+	}
+	return tempEnemies;
+}
+// LVL 5
+function getCoins5() {
+	let tempCoins = [];
+	// individual level coins
+	tempCoins.push(new Coin(10, 0, -1, '#FFFF00', 1));
+
+	return tempCoins;
+}
+function getEnemies5() {
+	let tempEnemies = [];
+
+	// BORDER Walls
+	for (let i = -2; i < 16; i++) {
+		tempEnemies.push(new Wall(-2, 0, -i, '#010114', 1));
+	}
+	for (let i = -2; i < 3; i++) {
+		tempEnemies.push(new Wall(-i, 0, -16, '#010114', 1));
+	}
+	for (let i = 2; i < 11; i++) {
+		tempEnemies.push(new Wall(i, 0, -4, '#010114', 1));
+	}
+	for(let i = 5; i < 16; i++) {
+		tempEnemies.push(new Wall(2, 0, -i, '#010114', 1));
+	}
+	for(let i = -2; i < 11; i++) {
+		tempEnemies.push(new Wall(i, 0, 2, '#010114', 1));
+	}
+	for(let i = -2; i < 5; i++) {
+		tempEnemies.push(new Wall(11, 0, -i, '#010114', 1));
+	}
+	// individual level walls
+
+	// individual enemies
+	// animate these
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[1, 0, -13],
+				[-1, 0, -4],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[8, 0, -3],
+				[8, 0, 1],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[7, 0, -3],
+				[7, 0, 1],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[6, 0, 1],
+				[6, 0, -3],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[5, 0, 1],
+				[5, 0, -3],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[4, 0, -3],
+				[4, 0, 1],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[3, 0, -3],
+				[3, 0, 1],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	// Checkerboard pt 1
+	for (let i = -2; i < 4; i += 2) {
+		tempEnemies.push(new Wall(-i, -1, -16, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -14, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -12, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -10, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -8, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -6, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -4, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -2, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 0, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 2, '#FFFFFF', 1));
+
+		// BLUES
+		tempEnemies.push(new Wall(-i, -1, -15, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -13, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -11, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -9, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -7, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -5, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -3, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -1, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 1, '#00FFFF', 1));
+	}
+
+	// Checkerboard pt 2
+	for (let i = -1; i < 2; i += 2) {
+		tempEnemies.push(new Wall(-i, -1, -15, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -13, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -11, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -9, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -7, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -5, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -3, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -1, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 1, '#FFFFFF', 1));
+
+		// BLUES
+		tempEnemies.push(new Wall(-i, -1, -16, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -14, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -12, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -10, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -8, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -6, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -4, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -2, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -0, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 2, '#00FFFF', 1));
+	}
+	for (let i = 3; i < 13; i += 2) {
+		tempEnemies.push(new Wall(i, -1, -3, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(i, -1, -1, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(i, -1, 1, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(i, -1, -4, '#00FFFF', 1));
+		tempEnemies.push(new Wall(i, -1, -2, '#00FFFF', 1));
+		tempEnemies.push(new Wall(i, -1, -0, '#00FFFF', 1));
+		tempEnemies.push(new Wall(i, -1, 2, '#00FFFF', 1));
+	}
+	for (let i = 4; i < 12; i += 2) {
+		tempEnemies.push(new Wall(i, -1, -4, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(i, -1, -2, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(i, -1, 0, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(i, -1, 2, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(i, -1, -3, '#00FFFF', 1));
+		tempEnemies.push(new Wall(i, -1, -1, '#00FFFF', 1));
+		tempEnemies.push(new Wall(i, -1, 1, '#00FFFF', 1));
+	}
+	return tempEnemies;
+}
+// LVL 6
+function getCoins6() {
+	let tempCoins = [];
+	// individual level coins
+	tempCoins.push(new Coin(10, 0, -1, '#FFFF00', 1));
+	tempCoins.push(new Coin(0, 0, 14, '#FFFF00', 1));
+	tempCoins.push(new Coin(-10, 0, -1, '#FFFF00', 1));
+	return tempCoins;
+}
+function getEnemies6() {
+	let tempEnemies = [];
+
+	// BORDER Walls
+
+	for (let i = -2; i < 3; i++) {
+		tempEnemies.push(new Wall(-i, 0, -16, '#010114', 1));
+		tempEnemies.push(new Wall(-i, 0, 16, '#010114', 1));
+	}
+	for (let i = 2; i < 11; i++) {
+		tempEnemies.push(new Wall(i, 0, -4, '#010114', 1));
+		tempEnemies.push(new Wall(-i, 0, -4, '#010114', 1));
+		tempEnemies.push(new Wall(i, 0, 2, '#010114', 1));
+		tempEnemies.push(new Wall(-i, 0, 2, '#010114', 1));
+	}
+	for(let i = 5; i < 16; i++) {
+		tempEnemies.push(new Wall(2, 0, -i, '#010114', 1));
+		tempEnemies.push(new Wall(-2, 0, -i, '#010114', 1));
+	}
+	for(let i = 3; i < 16; i++) {
+		tempEnemies.push(new Wall(2, 0, i, '#010114', 1));
+		tempEnemies.push(new Wall(-2, 0, i, '#010114', 1));
+	}
+	for(let i = -2; i < 5; i++) {
+		tempEnemies.push(new Wall(11, 0, -i, '#010114', 1));
+		tempEnemies.push(new Wall(-11, 0, -i, '#010114', 1));
+	}
+	// individual level walls
+
+	// individual enemies
+	// animate these
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[1, 0, -13],
+				[-1, 0, -8],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[1, 0, -8],
+				[-1, 0, -4],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[8, 0, 1],
+				[8, 0, -3],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[7, 0, 1],
+				[7, 0, -3],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[6, 0, 1],
+				[6, 0, -3],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[5, 0, 1],
+				[5, 0, -3],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[4, 0, 1],
+				[4, 0, -3],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[-5, 0, 1],
+				[-7, 0, -3],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(
+		new MovingEnemy(
+			[
+				[0, 0, 3],
+				[0, 0, 15],
+			],
+			'#0000FF',
+			1
+		)
+	);
+	tempEnemies.push(new Enemy(-4, 0, -2, '#0000FF', 1));
+	tempEnemies.push(new Enemy(-8, 0, 0, '#0000FF', 1));
+	// Checkerboard pt 1
+	for (let i = -2; i < 4; i += 2) {
+		tempEnemies.push(new Wall(-i, -1, -16, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -14, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -12, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -10, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -8, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -6, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -4, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -2, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 0, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 2, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 4, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 6, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 8, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 10, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 12, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 14, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 16, '#FFFFFF', 1));
+
+		// BLUES
+		tempEnemies.push(new Wall(-i, -1, -15, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -13, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -11, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -9, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -7, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -5, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -3, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -1, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 1, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 3, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 5, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 7, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 9, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 11, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 13, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 15, '#00FFFF', 1));
+	}
+
+	// Checkerboard pt 2
+	for (let i = -1; i < 2; i += 2) {
+		tempEnemies.push(new Wall(-i, -1, -15, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -13, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -11, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -9, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -7, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -5, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -3, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -1, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 1, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 3, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 5, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 7, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 9, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 11, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 13, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 15, '#FFFFFF', 1));
+
+		// BLUES
+		tempEnemies.push(new Wall(-i, -1, -16, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -14, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -12, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -10, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -8, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -6, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -4, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -2, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -0, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 2, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 4, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 6, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 8, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 10, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 12, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 14, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 16, '#00FFFF', 1));
+	}
+	for (let i = 3; i < 13; i += 2) {
+		tempEnemies.push(new Wall(i, -1, -3, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(i, -1, -1, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(i, -1, 1, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(i, -1, -4, '#00FFFF', 1));
+		tempEnemies.push(new Wall(i, -1, -2, '#00FFFF', 1));
+		tempEnemies.push(new Wall(i, -1, -0, '#00FFFF', 1));
+		tempEnemies.push(new Wall(i, -1, 2, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -3, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -1, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 1, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -4, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -2, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -0, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 2, '#00FFFF', 1));
+	}
+	for (let i = 4; i < 12; i += 2) {
+		tempEnemies.push(new Wall(i, -1, -4, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(i, -1, -2, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(i, -1, 0, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(i, -1, 2, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(i, -1, -3, '#00FFFF', 1));
+		tempEnemies.push(new Wall(i, -1, -1, '#00FFFF', 1));
+		tempEnemies.push(new Wall(i, -1, 1, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -4, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -2, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 0, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 2, '#FFFFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -3, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, -1, '#00FFFF', 1));
+		tempEnemies.push(new Wall(-i, -1, 1, '#00FFFF', 1));
 	}
 	return tempEnemies;
 }

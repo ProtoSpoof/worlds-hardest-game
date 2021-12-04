@@ -8,13 +8,12 @@
 		<link rel="stylesheet" href="main.css" />
 	</head>
 	<body>
-		<img id="skyboxRight" src="assets/right.png" alt="skybox textures" style="display: none" />
-		<img id="skyboxLeft" src="assets/left.png" alt="skybox textures" style="display: none" />
-		<img id="skyboxTop" src="assets/top.png" alt="skybox textures" style="display: none" />
-		<img id="skyboxBottom" src="assets/bottom.png" alt="skybox textures" style="display: none" />
-		<img id="skyboxFront" src="assets/front.png" alt="skybox textures" style="display: none" />
-		<img id="skyboxBack" src="assets/back.png" alt="skybox textures" style="display: none" />
 		<canvas id="game-space"></canvas>
+		<h1>
+			Coins Remaining: <span id="coin-counter"></span>
+			<br />
+			Deaths: <span id="death-counter">0</span>
+		</h1>
 	</body>
 	<script>
 		// Setup the gamespace for webgl stuff
@@ -23,7 +22,6 @@
 	</script>
 	<!-- Utilities -->
 	<script defer src="js/twgl-full.min.js"></script>
-	<script defer src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	<script defer src="js/utils.js"></script>
 
 	<!-- Game Objects -->
@@ -32,6 +30,7 @@
 	<script defer src="js/enemy.js"></script>
 	<script defer src="js/coin.js"></script>
 	<script defer src="js/level.js"></script>
+	<script defer src="js/wall.js"></script>
 
 	<!-- Interaction -->
 	<script defer src="js/controller.js"></script>

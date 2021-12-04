@@ -1,21 +1,11 @@
 class Coin extends GameObject {
-	constructor(
-		x = 0,
-		y = 0,
-		z = 0,
-		angle = 0,
-		color = '#ffff00',
-		size = 1,
-		ambientIntesity = 0.1,
-		shininess = 50,
-		ks = 0.2
-	) {
+	constructor(x = 0, y = 0, z = 0, color = '#ffff00', size = 1, ambientIntesity = 0.1, shininess = 50, ks = 0.2) {
 		super(
 			twgl.primitives.createCylinderBufferInfo(gl, size / 2, 0.1, 15, 1),
 			x,
 			y,
 			z,
-			angle,
+			Math.random() * 360,
 			color,
 			size,
 			ambientIntesity,

@@ -85,12 +85,12 @@ levels.push(
 const player = new Player(new Controller(), new Camera(-30, 0, canvas), 0, 0.01, 0, '#FF0000', 1);
 const skybox = new Skybox(
 	skyboxShaders,
-	'../assets/front.png',
-	'../assets/back.png',
-	'../assets/top.png',
-	'../assets/bottom.png',
-	'../assets/left.png',
-	'../assets/right.png'
+	'https://quinnkildare.dev/CAP4720/assets/front.png',
+	'https://quinnkildare.dev/CAP4720/assets/back.png',
+	'https://quinnkildare.dev/CAP4720/assets/top.png',
+	'https://quinnkildare.dev/CAP4720/assets/bottom.png',
+	'https://quinnkildare.dev/CAP4720/assets/left.png',
+	'https://quinnkildare.dev/CAP4720/assets/right.png'
 );
 
 // Game Loop

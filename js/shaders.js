@@ -24,10 +24,6 @@ void main () {
         vec3 color;
     };
 
-    // struct DirectionalLight {
-
-    // };
-
     out vec4 outColor;
     in vec3 fragNormal;
     in vec3 fragPosition;
@@ -47,16 +43,6 @@ void main () {
         vec3 ambientLighting = materialColor * ambientIntensity;
         return ambientLighting + diffuseLighting + specularLighting;
     }
-
-    vec3 calcDirectionalLight (PointLight light, vec3 N, vec3 V) {
-        vec3 L = normalize(light.pos.xyz);
-        vec3 H = normalize(L + V);
-        vec3 diffuseLighting = ((1. - ks) * materialColor * clamp(dot(L, N), 0., 1.));
-        vec3 specularLighting = ks * (light.color.xyz * pow(clamp(dot(H, N), 0., 1.), shininess));
-        vec3 ambientLighting = materialColor * ambientIntensity;
-        return ambientLighting + diffuseLighting + specularLighting;
-    }
-
 
     void main () {
         vec3 N = normalize(fragNormal);
